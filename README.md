@@ -8,5 +8,5 @@ Remotely sensed biomass carbon density maps are widely used for myriad scientifi
 #### The maps are described in the following manuscript:
 Spawn, S.A., C.C. Sullivan, T.J. Lark, H.K. Gibbs. Harmonized Global Maps of Above and Belowground Biomass Carbon Density in the Year 2010. Scientific Data (in review).
 
-#### The data final maps can be accessed from the Oak Ridge National Laboratory DAAC repository: 
+#### The final data layers can be accessed from the Oak Ridge National Laboratory DAAC repository: 
 Spawn, S.A and H.K. Gibbs, Harmonized Global Maps of Above and Belowground biomass carbon density, 2010. ORNL DAAC, Oak Ridge, Tennessee, USA. (in review) https://doi.org/10.3334/ORNLDAAC/1763
