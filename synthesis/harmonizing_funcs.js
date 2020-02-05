@@ -1,6 +1,6 @@
 /*
   Author: Seth Spawn (spawn@wisc.edu)
-  Date: Jun 28, 2019 [last modified]
+  Date: Jan 15, 2020 [last modified]
   Purpose: Defines woody_globalMosaic function which combines the GlobBiomass and Bouvet maps using the 
            guidance of the ESA CCI landcover map.
            Also Defines globalMosaic() and its dependency addHerb() which combines all disparate biomass maps 
@@ -90,7 +90,7 @@ var addHerb = function(woody, herb, percTree){
 var globalMosaic = function(woody, grass, crop, tundra, percTree, landcover, woodyAGB, tundraAGB){
   
   // trim significant digits to avoid uncertainty outliers (6/28/19)
-      woody = significantDigits(woody)
+      woody = significantDigits(woody.unmask())                          // -- unmask critical for BGB (01/15/19)
       grass = significantDigits(grass)
       crop = significantDigits(crop)
       tundra = significantDigits(tundra)
@@ -171,7 +171,7 @@ var globalMosaic = function(woody, grass, crop, tundra, percTree, landcover, woo
 
   // --- Boreal South (S of 60 degrees) 
   var S_borealSparce = tundra.updateMask(sparce)
-  var S_borealOther = addHerb(woody, borealHerb_bio, percTree)// WHY IS TUNDRA BEING APPLIED TO TREE COVER?????
+  var S_borealOther = addHerb(woody, borealHerb_bio, percTree)
   var S_borealMosaic = ee.ImageCollection([S_borealSparce, S_borealOther])
       S_borealMosaic = S_borealMosaic.reduce(ee.Reducer.firstNonNull()).rename(bandNames)
       S_borealMosaic = S_borealMosaic.updateMask(borealMask).multiply(S_weight)
